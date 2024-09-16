@@ -51,7 +51,7 @@ COPY start.sh /usr/local/bin/start.sh
 RUN chmod +x /usr/local/bin/start.sh
 
 # Открываем порт 80 для веб-сервера
-EXPOSE 80
+EXPOSE 8080
 
 # Запускаем скрипт запуска
 CMD ["/usr/local/bin/start.sh"]
