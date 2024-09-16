@@ -1,0 +1,151 @@
+
+//МСоздание тендера +++ 
+POST http://127.0.0.1:8000/api/tenders/new
+Content-Type: application/json
+
+{
+  "name": "New Tender Example",
+  "description": "This is a adastest tender for the new API endpoint",
+  "serviceType": "Construction",
+  "status": "Created",
+  "organizationId": "26f2952e-74db-480c-8baa-91217fed870c",
+  "creatorUsername": "uabernathy"
+}
+
+###
+//список тендеров
+GET http://127.0.0.1:8000/api/tenders
+Content-Type: application/json
+
+{
+  "service_type": ["Construction"],
+  "limit": 5,
+  "offset": 
+}
+
+###
+//тендеры пользователя
+GET http://127.0.0.1:8000/api/tenders/my
+Content-Type: application/json
+
+{
+  "limit": 5,
+  "offset": 0,
+  "username": "amely.goyette"
+}
+
+
+
+###
+//Получение статуса тендера
+GET http://127.0.0.1:8000/api/tenders/c65bdbae-a63e-4418-a76d-9bd166df7a75/status
+Content-Type: application/json
+
+{
+  "username": "uabernathy"
+}
+
+###
+# Изменить статус тендера
+PUT http://localhost:8000/api/tenders/c65bdbae-a63e-4418-a76d-9bd166df7a75/status
+Content-Type: application/json
+
+{
+  "status": "Created",
+  "username": "amely.goyette"
+}
+
+###
+//Обновить тендер
+PATCH http://localhost:8000/api/tenders/c65bdbae-a63e-4418-a76d-9bd166df7a75/edit
+Content-Type: application/json
+
+{
+  "username": "amely.goyette",
+  "name": "HEllo",
+  "description": "This iфs a ateфst tender for the new API endpoint",
+  "serviceType": "Construction"
+}
+
+###
+//rollback
+PUT http://localhost:8000/api/tenders/c65bdbae-a63e-4418-a76d-9bd166df7a75/rollback/6
+Content-Type: application/json
+
+{
+  "username": "amely.goyette"
+}
+
+
+###
+//Создание bid
+POST http://localhost:8000/api/bids/new
+Content-Type: application/json
+
+
+{
+  "name": "string",
+  "description": "string",
+  "tenderId": "4a683444-232a-4246-8f76-33133789ba1c",
+  "authorType": "Organization",
+  "authorId": "26f2952e-74db-480c-8baa-91217fed870c"
+}
+
+###
+//Получение bids пользователя
+GET http://localhost:8080/api/bids/my
+Content-Type: application/json
+
+{
+  "username": "layla40"
+}
+
+###
+
+//Получение bids по tenderId
+GET http://localhost:8080/api/bids/8cf443ed-554f-4f1f-b5dd-8d2b18520816/list
+Content-Type: application/json
+
+{
+  "username": "layla40"
+}
+
+###
+GET http://localhost:8080/api/bids/93174769-2f95-442c-8ac2-9df2f4739bc0/status
+Content-Type: application/json
+
+{
+  "username": "layla40"
+}
+
+###
+//Добавить несоответсвие bidId
+PUT http://localhost:8080/api/bids/3174769-2f95-442c-8ac2-9df2f4739bc0/status
+Content-Type: application/json
+
+{
+  
+  "username": "layla40",
+  "newStatus": "UPDATED"
+}
+
+###
+PATCH http://localhost:8080/api/bids/93174769-2f95-442c-8ac2-9df2f4739bc0/edit?username=layla40
+Accept: application/json
+Content-Type: application/json
+
+{
+  "name": "string",
+  "description": "string"
+}
+
+
+PUT http://localhost:8080/api/bids/93174769-2f95-442c-8ac2-9df2f4739bc0/submit_decision
+Content-Type: application/json
+
+{
+  "bidId": "a315cd66-4fa7-44bf-94b2-e6503afa7775",
+  "username": "layla40",
+  "decision": "ACCEPTED"
+}
+
