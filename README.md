@@ -5,7 +5,7 @@ docker build . -t my-app
 ```
 
 ```shell
-docker run -p 8080:8080   
+docker run -p 8080:8080 my-app  
 ```
 
 # Сервис проведения тендеров
